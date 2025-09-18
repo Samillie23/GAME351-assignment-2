@@ -1,19 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 0; // Set player's movement speed.
-    public float rotationSpeed = 0; // Set player's rotation speed.
+    public float speed = 10; // Set player's movement speed.
+    public float rotationSpeed = 20; // Set player's rotation speed.
 
     public Rigidbody rb; // Reference to player's Rigidbody.
     public GameObject CM; // Center of mass for stable movement
     public List<GameObject> Springs; // Makes the car hover
-    public float hoverForce = 0;
+    public float hoverStrength = 30;
+    public float hoverDampening = 25;
+    public float lastHitDist = 0;
+    public float length = 15f;
+    
+    private float HooksLawDampen(float hitDistance)
+    {
+        float forceAmount = hoverStrength * (length - hitDistance) + (hoverDampening * (lastHitDist - hitDistance));
+        forceAmount = Mathf.Max(0f, forceAmount);
+        lastHitDist = hitDistance;
+
+        return forceAmount;
+    }
 
     // Start is called before the first frame update
     private void Start()
@@ -39,10 +53,17 @@ public class PlayerController : MonoBehaviour
         // Hover code
         foreach (GameObject spring in Springs)
         {
+            // Shoots raycasts to figure out the distance between spring and floor
             RaycastHit hit;
-            if (Physics.Raycast(spring.transform.position, transform.TransformDirection(Vector3.down), out hit, 15f))
+            if (Physics.Raycast(spring.transform.position, transform.TransformDirection(Vector3.down), out hit, length))
             {
-                rb.AddForceAtPosition(Time.deltaTime * transform.TransformDirection(Vector3.up) * math.pow(15f - hit.distance, 2) / 15f * (100f * hoverForce), spring.transform.position);
+                // Applys force according to HooksLawDampen on each spring
+                float forceAmount = HooksLawDampen(hit.distance);
+                rb.AddForceAtPosition(Time.deltaTime * transform.TransformDirection(Vector3.up) * forceAmount, spring.transform.position);
+            }
+            else
+            {
+                lastHitDist = length * 1.1f;
             }
         }
         rb.AddForce(-Time.deltaTime * transform.TransformDirection(Vector3.right) * transform.InverseTransformVector(rb.velocity).x * 5f);
