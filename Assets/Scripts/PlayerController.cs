@@ -14,11 +14,11 @@ public class PlayerController : MonoBehaviour
 
     public Rigidbody rb; // Reference to player's Rigidbody.
     public GameObject CM; // Center of mass for stable movement
-    public List<GameObject> Springs; // Makes the car hover
-    public float hoverStrength = 30;
-    public float hoverDampening = 25;
-    public float lastHitDist = 0;
-    public float length = 15f;
+    public List<GameObject> Springs; // Raycast points
+    public float hoverStrength = 30; // Amount of force off the ground
+    public float hoverDampening = 25; // For stabilizing
+    public float lastHitDist = 0; 
+    public float length = 15f; // Total distance raycasted
     
     private float HooksLawDampen(float hitDistance)
     {
@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
                 lastHitDist = length * 1.1f;
             }
         }
+        // Drag I think?
         rb.AddForce(-Time.deltaTime * transform.TransformDirection(Vector3.right) * transform.InverseTransformVector(rb.velocity).x * 5f);
     }
 }
