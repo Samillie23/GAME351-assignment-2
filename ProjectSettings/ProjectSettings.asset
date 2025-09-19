@@ -700,11 +700,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: 
+  cloudProjectId: 94e2e7e3-f67b-4ed0-8c28-e82d2b062485
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: GAME351-assignment-2
+  organizationId: alanijordan
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 
