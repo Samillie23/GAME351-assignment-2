@@ -10,7 +10,7 @@ Alani Jordan
 
 Implemented features:
 1. Driving a Hovercraft
-   Movement was done through the physics engine. "A" and "D" turn the car while "W" and "S" move forwards and backwards. Raycasts are used on the corners of the cars to make them go up whenever they start to approach a hill. This way it tilts while moving over terrain. Follow camera was done using cinemachine.
+   Movement was done through the physics engine. "A" and "D" turn the car while "W" and "S" move forwards and backwards. Raycasts are used on the corners of the cars to make them go up whenever they start to approach a hill. This way it tilts while moving over terrain. Follow camera was done using cinemachine. However beacuse the movement is physics based going over hills at fast speeds can lead to flipping of the car.
 2. Three Car Types
    The average car is the starting purple and green car. The fast one is the long, black and yellow car. The cornering car is the white and purble one. Each has stats matching the type of car it is with their fast speed and slower cornering or vice-versa. All are framerate independent and the speed and turning values can be changed through the inspector.
 3. Hovercraft Levitation
