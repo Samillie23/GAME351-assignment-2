@@ -8,18 +8,13 @@ public class CameraSwitch : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera[] switchCamera;
     private CinemachineVirtualCamera cam;
     private int currentCamera;
-    private GameObject[] hovercrafts;
-    private int current = 0;
-    private AudioSource[] switchAudio;
-    private int currentAudio;
+    [SerializeField] private GameObject[] hovercrafts;
+    private int current;
 
     // Start is called before the first frame update
     void Start()
     {
-        hovercrafts = GameObject.FindGameObjectsWithTag("Hovercraft");
-        current = 0;
-        for (int i = 0; i < hovercrafts.Length; i++)
-            hovercrafts[i].GetComponent<PlayerController>().enabled = (i == 0);
+        
     }
 
     // Update is called once per frame
