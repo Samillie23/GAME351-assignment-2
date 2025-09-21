@@ -1,29 +1,34 @@
 # GAME351-assignment-2
-Game 351 Assignment 1
 School of Information, University of Arizona 
-September 2th, 2025
+September 20th, 2025
 
 Members:
-Anis
-Kristal
-Rudy
-Alani
+Anis Feria
+Kristal Gutierrez
+Rudy (Rodolfo Bours)
+Alani Jordan
 
 Implemented features:
-1. Follow Camera
-   The camera is setup in a way that it's position and orientation relative to Jammo do not change at all while moving. As for the movement it does work with both WASD and arrow keys. Left and right will rotate Jammo in that respective direction. There is one thing where while moving backwards the camera becomes very shakey for some reason that I could not figure out.
-3. Realistic Terrain
-  Using a mix of different stamps and terrain tools were done to create the terrain. There are mountains that surrond the area as well as hills and valleys for Jammo to walk around. There are also two flatter areas where the castle and village are located. The ground is also painted with different materials marking out a dirt path, grass, and sand. 
-5. Trees & Foliage
-   5 unique foliage models and grass were implemented around the terrain to bring life into the scene. They are also mixed and varied so that it does not ever feel too stagnant.
-7. Baron’s Castle
-   A castle was made in blender and includes the outer walls, inner keep, and battlements. (No textures but models were hand made by Kristal in Blender)
-9. Small Village
-    A town was added near by to the castle connected using dirt paths. Inside the village you will find 2 unique prefabs as well as a well, haybale, sign and wagon. The dirt path also extends into the forest where you can find another house at top a hill.  (No textures but models were hand made by Kristal in Blender)
-11. Areas of Water
-    2 seperate areas of water were added, a small pond and moat around the castle. There is also a shoreline around the pong and boat that sits on the shoreline. The water prefab was also edited to create a realistic look.
+1. Driving a Hovercraft
+   Movement was done through the physics engine. "A" and "D" turn the car while "W" and "S" move forwards and backwards. Raycasts are used on the corners of the cars to make them go up whenever they start to approach a hill. This way it tilts while moving over terrain. Follow camera was done using cinemachine.
+2. Three Car Types
+   The average car is the starting purple and green car. The fast one is the long, black and yellow car. The cornering car is the white and purble one. Each has stats matching the type of car it is with their fast speed and slower cornering or vice-versa. All are framerate independent and the speed and turning values can be changed through the inspector.
+3. Hovercraft Levitation
+   Using the same Raycasts from before and Unity's physics the car is pushed upwards from each of the four corners to create a hover effect. Because of the usage of the physics engine to do this the car already moves up and down slightly while idling until the car stabilizes.
+4. Toggling Between Cars
+   "C" cycles between the 3 cars starting with the fast one, average and then cornering. The active camera and car is changed through a script. While the priority of the camera is changed to swap between them, the inactive cars' movement script is disabled. The cars can be swapped continously and will loop back to the first car.
+5. More Realistic Effects
+   A sound script was added to each car so that it makes sounds when accelerating and decelerating through AudioSource. A hover engine (cube) is added to the bottom of all three cars and both the engine block and lights/tron features on the cars glow through the use of bloom.
 
+To install the project, follow these steps:
+1. Unpack the zip file
+2. In Unity "Add project from disk"
+3. Then select the files that you unpacked
+4. Open and load the new project
+5. The assignment should then be usable.
+   
 Rendering Pipeline: None (Render Pipeline Assist)
+
 Credits:
  
 Sample code by Leonard D. Brown, University of Arizona.
