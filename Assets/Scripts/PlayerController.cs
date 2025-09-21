@@ -15,8 +15,8 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb; // Reference to player's Rigidbody.
     public GameObject CM; // Center of mass for stable movement
     public List<GameObject> Springs; // Raycast points
-    private float hoverStrength = 40; // Amount of force off the ground
-    private float hoverDampening = 25; // For stabilizing
+    private float hoverStrength = 50; // Amount of force off the ground
+    private float hoverDampening = 30; // For stabilizing
     private float lastHitDist = 0; 
     private float length = 15f; // Total distance raycasted
     
